@@ -1,9 +1,18 @@
 package com.Alice.springbootOA.controller;
 
+import com.Alice.springbootOA.VO.ResultVO;
+import com.Alice.springbootOA.exception.ValidException;
+import com.Alice.springbootOA.form.TestForm;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.validation.Valid;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Alice
@@ -14,11 +23,29 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Slf4j
 public class TestController {
 
-    @RequestMapping("/hello")
+    @RequestMapping("/hello.json")
     @ResponseBody
-    public String hello(){
+    public ResultVO hello() {
         log.info("hello");
-        return "hello,permisson";
+        throw new RuntimeException("test exception");
+        //return ResultVO.success("hello,permission");
     }
+
+    @RequestMapping("/validate.json")
+    @ResponseBody
+    public ResultVO validate(@Valid TestForm testForm, BindingResult bindingResult) {
+        log.info("validate");
+        if(bindingResult.hasErrors()){
+            List<FieldError> fieldErrors = bindingResult.getFieldErrors();
+            fieldErrors.forEach(e->log.info("{}-{}",e.getField(),e.getDefaultMessage()));
+            //throw new ValidException(bindingResult.getFieldError().getDefaultMessage());
+        }
+
+        return ResultVO.success("test Validate");
+
+
+    }
+
+
 
 }
