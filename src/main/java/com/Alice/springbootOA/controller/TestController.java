@@ -1,7 +1,7 @@
 package com.Alice.springbootOA.controller;
 
 import com.Alice.springbootOA.VO.ResultVO;
-import com.Alice.springbootOA.exception.ValidException;
+import com.Alice.springbootOA.exception.PermissionException;
 import com.Alice.springbootOA.form.TestForm;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Alice
@@ -44,6 +43,14 @@ public class TestController {
         return ResultVO.success("test Validate");
 
 
+    }
+
+    @RequestMapping("/test.page")
+    @ResponseBody
+    public ResultVO testpage() {
+        log.info("hello");
+        throw new PermissionException("test exception");
+        //return ResultVO.success("hello,permission");
     }
 
 

@@ -1,5 +1,6 @@
 package com.Alice.springbootOA.pojo;
 
+import lombok.Builder;
 import lombok.Data;
 import org.hibernate.annotations.DynamicInsert;
 

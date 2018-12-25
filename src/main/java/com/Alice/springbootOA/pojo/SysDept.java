@@ -1,8 +1,12 @@
 package com.Alice.springbootOA.pojo;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
@@ -13,11 +17,15 @@ import java.util.Date;
  * 2018/12/22  15:28
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "sys_dept")
 public class SysDept {
     /**部门id*/
     @Id
+    @GeneratedValue
     private Integer id;
 
     /**部门名称*/

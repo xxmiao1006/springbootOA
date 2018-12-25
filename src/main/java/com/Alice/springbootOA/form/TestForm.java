@@ -17,6 +17,6 @@ public class TestForm {
     private String msg;
 
     @NotNull
-    private Integer Id;
+    private Integer id;
 
 }
