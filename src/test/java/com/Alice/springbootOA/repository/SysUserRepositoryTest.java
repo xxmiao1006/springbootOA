@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Date;
+
 import static org.junit.Assert.*;
 
 /**
@@ -30,14 +32,15 @@ public class SysUserRepositoryTest {
     @Test
     public void save(){
         SysUser sysUser = new SysUser();
-        sysUser.setId(6);
         sysUser.setUsername("Alice");
         sysUser.setMail("1151856023@qq.com");
         sysUser.setTelephone("15797652051");
         sysUser.setPassword("123456");
         sysUser.setDeptId(1);
         sysUser.setStatus(1);
+        sysUser.setOperator("system");
         sysUser.setOperateIp("127.0.0.1");
+        sysUser.setOperateTime(new Date());
 
         SysUser result = sysUserRepository.save(sysUser);
         Assert.assertNotNull(result);

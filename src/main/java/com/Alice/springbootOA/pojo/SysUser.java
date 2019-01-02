@@ -1,10 +1,13 @@
 package com.Alice.springbootOA.pojo;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
@@ -15,13 +18,16 @@ import java.util.Date;
  * 2018/12/22  15:42
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
-@DynamicInsert
 @Table(name = "sys_user")
 public class SysUser {
 
     /**用户id*/
     @Id
+    @GeneratedValue
     private Integer id;
 
     /**用户名称*/
